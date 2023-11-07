@@ -19,7 +19,7 @@ public class PlayerJumpController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _cc.SimpleMove(Vector3.up * jumpHeight);
+            _cc.Move(Vector3.up * jumpHeight);
         }
     }
 }
