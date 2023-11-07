@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -6,7 +7,15 @@ public class PlayerInteractController : MonoBehaviour
 {
 
     private GameObject _camera;
+    
     [SerializeField] private GameObject interactCrossHair;
+    [SerializeField] private float throwSpeed;
+    [SerializeField] private float dropSpeed; 
+    
+    private Collider _lastPointedAtObject;
+    private IInteractable _lastInteractable;
+
+    [NonSerialized] public PickubableObject HeldObject;
     
     // Start is called before the first frame update
     void Start()
@@ -20,18 +29,40 @@ public class PlayerInteractController : MonoBehaviour
     void Update()
     {
         Transform headTransform = _camera.transform;
+        
+        // throwing
+        if (Input.GetKeyDown(KeyCode.F) && !ReferenceEquals(HeldObject, null))
+            HeldObject.Throw(headTransform.forward * dropSpeed);
+        else if (Input.GetKeyDown(KeyCode.G) && !ReferenceEquals(HeldObject, null))
+            HeldObject.Throw(headTransform.forward * throwSpeed);
 
-        if (!Physics.Raycast(headTransform.position, headTransform.forward, out RaycastHit hitInfo, 5))
+        // interacting / picking up
+        
+        if (!Physics.Raycast(headTransform.position, headTransform.forward, out RaycastHit hitInfo, 3))
         {
             // Not pointing at anything
             interactCrossHair.SetActive(false);
             return;
         }
 
-        // expensive method invocation can go suck mah bawls (it also shouldn't be that bad because of the prior check)
-        IInteractable hitObject = hitInfo.collider.GetComponent<IInteractable>();
+        // this so that i dont call get component as often
+        Collider hitObject = hitInfo.collider;
 
-        if (hitObject == null)
+        IInteractable hitInteractable;
+
+        if (hitObject == _lastPointedAtObject) // pointing at the same object
+        {
+            hitInteractable = _lastInteractable;
+        }
+        else // pointing at a new object
+        {
+            _lastPointedAtObject = hitObject;
+            // expensive method invocation can go suck mah bawls (it also shouldn't be that bad because of the prior check)
+            hitInteractable = hitObject.GetComponent<IInteractable>();
+            _lastInteractable = hitInteractable;
+        }
+
+        if (hitInteractable == null)
         {
             // Not pointing at interactable
             interactCrossHair.SetActive(false);
@@ -41,7 +72,7 @@ public class PlayerInteractController : MonoBehaviour
         interactCrossHair.SetActive(true);
 
         if (Input.GetMouseButton(0))
-            hitObject.OnInteract();
+            hitInteractable.OnInteract();
 
         // apparently this is a thing which is cool (avoid null check)
         // hitObject?.OnInteract();
