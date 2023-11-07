@@ -15,6 +15,7 @@ public class PickubableObject : MonoBehaviour, IInteractable
 
     public bool OnInteract()
     {
+        
         Transform objectTransform = transform;
         objectTransform.SetParent(_player.transform);
 
