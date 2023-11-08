@@ -7,6 +7,7 @@ public class PickubableObject : MonoBehaviour, IInteractable
     [SerializeField] private Vector3 relativePosition;
     [SerializeField] private Quaternion rotation;
     private PlayerInteractController _player;
+    private GameObject _head;
     
     public bool IsHeld { get; private set; }
 
@@ -16,6 +17,7 @@ public class PickubableObject : MonoBehaviour, IInteractable
     {
         _player = FindObjectOfType<PlayerInteractController>();
         _rigidbody = GetComponent<Rigidbody>();
+        _head = _player.GetComponentInChildren<Camera>().gameObject;
     }
 
     public bool OnInteract()
@@ -28,7 +30,7 @@ public class PickubableObject : MonoBehaviour, IInteractable
         _rigidbody.isKinematic = true;
 
         Transform objectTransform = transform;
-        objectTransform.SetParent(_player.transform);
+        objectTransform.SetParent(_head.transform);
 
         objectTransform.localPosition = relativePosition;
         objectTransform.localRotation = rotation;
