@@ -21,7 +21,7 @@ public class Shoot : MonoBehaviour
         if (Input.GetMouseButtonDown(0) && _musket.IsHeld)
         {
             Instantiate(musketBall, playerTransform.position, Quaternion.identity);
-            musketBall.velocity = playerTransform.forward * 10;
+            musketBall.AddForce(playerTransform.forward * 1000);
         }
     }
 }
