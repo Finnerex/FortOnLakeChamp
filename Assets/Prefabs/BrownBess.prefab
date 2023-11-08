@@ -80,6 +80,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cec23f235c014964e9511bfebb856068, type: 3}
       insertIndex: -1
       addedObject: {fileID: 162241269246384096}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cec23f235c014964e9511bfebb856068, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 8589786479624681859}
   m_SourcePrefab: {fileID: 100100000, guid: cec23f235c014964e9511bfebb856068, type: 3}
 --- !u!1 &1850552202163259744 stripped
 GameObject:
@@ -125,8 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a3c8044568ea4763917c39875ac4db2c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  relativePosition: {x: 0, y: 0, z: 0}
-  rotation: {x: 0, y: 0, z: 0, w: 1}
+  relativePosition: {x: 0.5, y: -1.6, z: 1}
+  rotation: {x: 0, y: 0.99904823, z: 0, w: 0.043619454}
 --- !u!65 &8550758386368941906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -160,4 +163,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25efd49ed134386b2e352f58cdf2c19, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  musketBall: {fileID: 0}
+  speed: 100
+  musketBall: {fileID: 3109882633842065323, guid: b507359cfbf0f2e4a961bac5591e1210, type: 3}
+--- !u!114 &8589786479624681859
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850552202163259744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8da46408ae64e5c996d9436f4100eb9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  textComponent: {fileID: 0}
