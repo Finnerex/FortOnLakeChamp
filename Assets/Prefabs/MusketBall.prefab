@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 4237973327972275132}
   - component: {fileID: 3109882633842065323}
   m_Layer: 0
-  m_Name: musket ball
+  m_Name: MusketBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -7,6 +7,8 @@ public class PickubableObject : MonoBehaviour, IInteractable
     [SerializeField] private Vector3 relativePosition;
     [SerializeField] private Quaternion rotation;
     private PlayerInteractController _player;
+    
+    public bool IsHeld { get; private set; }
 
     private Rigidbody _rigidbody;
 
@@ -31,12 +33,16 @@ public class PickubableObject : MonoBehaviour, IInteractable
         objectTransform.localPosition = relativePosition;
         objectTransform.localRotation = rotation;
 
+        IsHeld = true;
+
         return true;
     }
 
     public void Throw(Vector3 force)
     {
         _rigidbody.isKinematic = false;
+
+        IsHeld = false;
         
         transform.SetParent(null);
         _player.HeldObject = null;
