@@ -71,7 +71,7 @@ public class PlayerInteractController : MonoBehaviour
 
         interactCrossHair.SetActive(true);
 
-        if (Input.GetMouseButton(0))
+        if (Input.GetKeyDown(KeyCode.E))
             hitInteractable.OnInteract();
 
         // apparently this is a thing which is cool (avoid null check)
