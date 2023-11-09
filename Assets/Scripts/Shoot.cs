@@ -40,7 +40,7 @@ public class Shoot : MonoBehaviour
             Transform playerTransform = transform;
             Vector3 playerForward = -playerTransform.forward;
             Vector3 ballOffset = playerForward * BallOffsetX + playerTransform.up * BallOffsetY;
-            Instantiate(musketBall, playerTransform.position + ballOffset, Quaternion.identity).velocity = (playerForward * speed);
+            Instantiate(musketBall, playerTransform.position + ballOffset, Quaternion.identity).velocity = playerForward * speed;
 
             _needReload = true;
         }
