@@ -1,58 +1,59 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Shoot : MonoBehaviour
 {
-    [SerializeField] Text text;
+    [SerializeField] private TextMeshProUGUI text;
     private PickubableObject _musket;
-    private bool _canShoot = true; // Variable to control shooting cooldown
+    
+    private bool _needReload;
+    [SerializeField] private float reloadTimeSeconds;
+    private float _currentReloadTimeSeconds;
 
     [SerializeField] private float speed;
     [SerializeField] private Rigidbody musketBall;
 
     void Start()
     {
+        text.enabled = false;
         _musket = GetComponent<PickubableObject>();
+        _currentReloadTimeSeconds = reloadTimeSeconds + 1;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetMouseButtonDown(0) && _musket.IsHeld && _canShoot)
+
+        if (Input.GetMouseButtonDown(0) && _musket.IsHeld && _currentReloadTimeSeconds >= reloadTimeSeconds && !_needReload)
         {
             // Trigger the shooting coroutine
-            StartCoroutine(ShootCoroutine());
+            Transform playerTransform = transform;
+            Vector3 playerForward = -playerTransform.forward;
+            Vector3 ballOffset = playerForward * 1.5f + playerTransform.up * 1.35f;
+            Instantiate(musketBall, playerTransform.position + ballOffset, Quaternion.identity).velocity =
+                (playerForward * speed);
+            
+            _needReload = true;
+            _currentReloadTimeSeconds = 0;
+        }
 
-            // Prevent shooting until the cooldown is over
-            _canShoot = false;
+        if (_needReload && Input.GetKeyDown(KeyCode.R))
+        {
+            text.enabled = true;
+            _currentReloadTimeSeconds = 0;
+        }
+
+        if (_currentReloadTimeSeconds < reloadTimeSeconds)
+            _currentReloadTimeSeconds += Time.deltaTime;
+        else if (_needReload)
+        {
+            text.enabled = false;
+            _needReload = false;
         }
     }
-
-    // Coroutine for the shooting logic
-    private IEnumerator ShootCoroutine()
-    {
-        Transform playerTransform = transform;
-        Vector3 playerForward = -playerTransform.forward;
-        Vector3 ballOffset = playerForward * 1.5f + playerTransform.up * 1.35f;
-        Instantiate(musketBall, playerTransform.position + ballOffset, Quaternion.identity).velocity =
-            (playerForward * speed);
-        
-        //enables reload text
-        text.enabled = true;
-        
-        //garenteed 3 sec wait time
-        yield return new WaitForSeconds(3f);
-        
-        //waits until 'r' is pressed
-        yield return new WaitUntil(() => Input.GetKeyDown(KeyCode.R));
-        
-        //gets rid of reload text
-        text.enabled = false;
-        
-        // Allow shooting again
-        _canShoot = true;
-    }
+    
 }
