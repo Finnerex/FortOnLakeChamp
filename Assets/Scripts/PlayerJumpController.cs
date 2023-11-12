@@ -6,6 +6,7 @@ public class PlayerJumpController : MonoBehaviour
 {
     private CharacterController _cc;
     [SerializeField] private float jumpHeight;
+    [SerializeField] private float jumpHeightMultiployer;
 
     // Start is called before the first frame update
     void Start()
@@ -19,7 +20,7 @@ public class PlayerJumpController : MonoBehaviour
         
         if (Input.GetKeyDown(KeyCode.Space))
         {
-            _cc.Move(Vector3.up * jumpHeight);
+            _cc.Move(Vector3.up * (jumpHeight * jumpHeightMultiployer));
         }
     }
 }
