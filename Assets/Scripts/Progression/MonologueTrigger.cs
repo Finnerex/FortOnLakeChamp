@@ -6,13 +6,14 @@ namespace Progression
     {
 
         [TextArea] [SerializeField] private string text;
+        [SerializeField] private GameStage[] stages;
         [SerializeField] private float displayTimeSeconds = 5;
-    
+        
         [SerializeField] private PlayerSpeech speechController;
     
         private void OnTriggerEnter(Collider other)
         {
-            if (other.GetComponent<PlayerController>() == null)
+            if (stages.Contains(GameStageManager.GameStage) && other.GetComponent<PlayerController>() == null)
                 return;
         
             speechController.SetMonologue(text, displayTimeSeconds);
