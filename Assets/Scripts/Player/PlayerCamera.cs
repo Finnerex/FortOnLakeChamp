@@ -70,7 +70,7 @@ public class PlayerCamera : MonoBehaviour
         {
             _currentLookTimeSeconds = 0;
             _looking = false;
-            
+
             // this is dumb but im doing it anyway
             playerRotation.y = cameraRotation.y;
             cameraRotation.y = 0;
@@ -98,7 +98,9 @@ public class PlayerCamera : MonoBehaviour
     {
         _looking = true;
         _lookTimeSeconds = lookTimeSeconds;
-        _currentLookTimeSeconds = lookTimeSeconds;
+        _currentLookTimeSeconds = 0;
+        
+        Debug.Log("Time: " + lookTimeSeconds);
 
         // this is so unnecessary and could be done much better
         Transform cameraTransform = transform;
@@ -107,13 +109,13 @@ public class PlayerCamera : MonoBehaviour
         // grab the current rotation
         Vector3 cameraRotation = cameraTransform.rotation.eulerAngles;
         Vector3 playerRotation = playerTransform.rotation.eulerAngles;
-
+        
         cameraRotation.y = playerRotation.y;
         playerRotation.y = 0;
 
         cameraTransform.rotation = Quaternion.Euler(cameraRotation);
         playerTransform.rotation = Quaternion.Euler(playerRotation);
 
-        _lookRotation = Quaternion.LookRotation(position);
+        _lookRotation = Quaternion.LookRotation(position - cameraTransform.position);
     }
 }
