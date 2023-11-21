@@ -20,7 +20,7 @@ public class PickubableObject : MonoBehaviour, IInteractable
         _head = _player.GetComponentInChildren<Camera>().gameObject;
     }
 
-    public bool OnInteract()
+    public virtual bool OnInteract()
     {
 
         if (!ReferenceEquals(_player.HeldObject, null))
@@ -40,7 +40,7 @@ public class PickubableObject : MonoBehaviour, IInteractable
         return true;
     }
 
-    public void Throw(Vector3 force)
+    public virtual void Throw(Vector3 force)
     {
         _rigidbody.isKinematic = false;
 
