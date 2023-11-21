@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace Progression
 {
@@ -13,7 +14,7 @@ namespace Progression
     
         private void OnTriggerEnter(Collider other)
         {
-            if (stages.Contains(GameStageManager.GameStage) && other.GetComponent<PlayerController>() == null)
+            if (!stages.Contains(StageManager.CurrentStage) || other.GetComponent<PlayerController>() == null)
                 return;
         
             speechController.SetMonologue(text, displayTimeSeconds);
