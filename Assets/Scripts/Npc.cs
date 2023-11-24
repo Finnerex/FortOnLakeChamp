@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using Progression;
+using UnityEditor;
 using UnityEngine;
 
 public class Npc : MonoBehaviour, IInteractable
@@ -35,14 +36,13 @@ public class Npc : MonoBehaviour, IInteractable
 
     public bool OnInteract()
     {
-        Dialogue dialogue = _dialogues[StageManager.CurrentStage];
-
-        // if (dialogue is null)
-        //     return false;
+        if (!_dialogues.TryGetValue(StageManager.CurrentStage, out Dialogue dialogue))
+            return false;
 
         playerCamera.LookAt(transform.position, 1);
-        speechController.SetDialogue(dialogue);
+        speechController.SetDialogue(dialogue, gameObject.name);
         
         return true;
     }
+    
 }

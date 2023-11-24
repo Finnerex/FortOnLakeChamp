@@ -3,7 +3,7 @@
     public enum GameStage
     {
         Testing = -1,
-
+        EatingTime
 
     }
 }

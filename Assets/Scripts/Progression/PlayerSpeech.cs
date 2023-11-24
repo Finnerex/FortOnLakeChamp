@@ -19,6 +19,7 @@ namespace Progression
         
         private DialogueOption[] _dialogueOptions;
         private int _selectedOption;
+        private string _senderName;
 
         private void Awake()
         {
@@ -45,7 +46,6 @@ namespace Progression
             else if (monologueText.text != "")
                 monologueText.text = "";
             
-            
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
@@ -56,15 +56,13 @@ namespace Progression
                     StageManager.CurrentStage++;
                 
                 // no further questions your honor
-                if (nextDialogue == null)
+                if (nextDialogue is null)
                 {
                     ResetOptions();
                     return;
                 }
-
-                _selectedOption = 0;
-                SetPointyGuy();
-                SetDialogue(nextDialogue.Value);
+                
+                SetDialogue(nextDialogue, _senderName);
                 
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -115,14 +113,17 @@ namespace Progression
             _monologueTimeSeconds = displayTimeSeconds;
         }
 
-        public void SetDialogue(Dialogue dialogue)
+        public void SetDialogue(Dialogue dialogue, string senderName)
         {
             pointyGuy.gameObject.SetActive(true);
+            _selectedOption = 0;
+            SetPointyGuy();
+
+            _senderName = senderName;
             
-            dialogueText.text = dialogue.MainText;
+            dialogueText.text = senderName + ":\n" + dialogue.MainText;
 
             DialogueOption[] options = dialogue.Options;
-            
 
             for (int i = 0; i < dialogueOptionsText.Length; i++)
             {

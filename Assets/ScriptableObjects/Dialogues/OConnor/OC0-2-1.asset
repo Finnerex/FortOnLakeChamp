@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7196edae059149aeac850b63b56ccfbb, type: 3}
+  m_Name: OC0-2-1
+  m_EditorClassIdentifier: 
+  mainText: I got word of Wendigo and plenty of other evil spirits.
+  options:
+  - text: Wendigo?
+    triggersNextStage: 0
+    followingDialogue: {fileID: 11400000, guid: 6b9c0e2fad3b1e244adf373aecaf1809, type: 2}
+  - text: Where'd you get that from?
+    triggersNextStage: 0
+    followingDialogue: {fileID: 11400000, guid: 96e82638878b0144688fae84d8f19bb1, type: 2}
+  - text: ...
+    triggersNextStage: 0
+    followingDialogue: {fileID: 0}

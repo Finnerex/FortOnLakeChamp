@@ -1,12 +1,13 @@
-using System;
+
 using UnityEngine;
 
 
 namespace Progression
 {
-    [Serializable] 
-    public struct Dialogue
+    [CreateAssetMenu(fileName = "New Dialogue", menuName = "Dialogue/Dialogue")]
+    public class Dialogue : ScriptableObject
     {
+        
         [SerializeField] [TextArea] private string mainText;
 
         [SerializeField] private DialogueOption[] options;
@@ -14,6 +15,6 @@ namespace Progression
         public string MainText => mainText;
         public DialogueOption[] Options => options;
         
-        
     }
+
 }

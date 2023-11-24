@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7196edae059149aeac850b63b56ccfbb, type: 3}
+  m_Name: OC0-1-0
+  m_EditorClassIdentifier: 
+  mainText: That's why we see no natives and especially no French.
+  options:
+  - text: Where did you hear that?
+    triggersNextStage: 0
+    followingDialogue: {fileID: 11400000, guid: 96e82638878b0144688fae84d8f19bb1, type: 2}
+  - text: What kind of monsters?
+    triggersNextStage: 0
+    followingDialogue: {fileID: 11400000, guid: 56eef51434df5614b95caac0f56bd04e, type: 2}
+  - text: You're full of shit, O'Connor.
+    triggersNextStage: 0
+    followingDialogue: {fileID: 0}

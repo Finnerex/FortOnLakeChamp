@@ -1,20 +1,21 @@
 
 using System;
+using JetBrains.Annotations;
 using UnityEngine;
-using Utility;
 
 namespace Progression
 {
     [Serializable]
     public struct DialogueOption
     {
-        [SerializeField] private string text;
+        [TextArea] [SerializeField] private string text;
         [SerializeField] private bool triggersNextStage;
-        [SerializeField] private NullableSerializable<Dialogue> followingDialogue;
+        [SerializeField] [CanBeNull] private Dialogue followingDialogue;
 
         public string Text => text;
         public bool TriggersNextStage => triggersNextStage;
-        public Dialogue? FollowingDialogue => followingDialogue;
+        [CanBeNull] public Dialogue FollowingDialogue => followingDialogue;
         
     }
+    
 }
