@@ -4033,8 +4033,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Option2
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 99d5eec77cdbffa4ebc4927f4a2b3d90, type: 2}
-  m_sharedMaterial: {fileID: -5171267665450599654, guid: 99d5eec77cdbffa4ebc4927f4a2b3d90, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f8974ba0173f75e44b45a5da3a17c6bd, type: 2}
+  m_sharedMaterial: {fileID: -3224067196373294222, guid: f8974ba0173f75e44b45a5da3a17c6bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -4064,7 +4064,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -22382,78 +22382,7 @@ MonoBehaviour:
   speechController: {fileID: 1325821867}
   playerCamera: {fileID: 472119180}
   dialogues:
-  - mainText: Hi! How was your day?
-    options:
-    - text: Good
-      triggersNextStage: 0
-      followingDialogue:
-        v:
-          mainText: Thats great!
-          options:
-          - text: How was your day
-            triggersNextStage: 0
-            followingDialogue:
-              v:
-                mainText: It was nice
-                options:
-                - text: okay
-                  triggersNextStage: 0
-                  followingDialogue:
-                    v:
-                      mainText: 
-                      options: []
-                    hasValue: 0
-                - text: bye
-                  triggersNextStage: 0
-                  followingDialogue:
-                    v:
-                      mainText: 
-                      options: []
-                    hasValue: 0
-              hasValue: 1
-          - text: Goodbye
-            triggersNextStage: 0
-            followingDialogue:
-              v:
-                mainText: It was nice
-                options: []
-              hasValue: 0
-        hasValue: 1
-    - text: Bad
-      triggersNextStage: 0
-      followingDialogue:
-        v:
-          mainText: Sucks to suck
-          options:
-          - text: indeed
-            triggersNextStage: 0
-            followingDialogue:
-              v:
-                mainText: 
-                options: []
-              hasValue: 0
-          - text: kys
-            triggersNextStage: 0
-            followingDialogue:
-              v:
-                mainText: kys
-                options:
-                - text: kys
-                  triggersNextStage: 0
-                  followingDialogue:
-                    v:
-                      mainText: 
-                      options: []
-                    hasValue: 0
-                - text: ...
-                  triggersNextStage: 0
-                  followingDialogue:
-                    v:
-                      mainText: 
-                      options: []
-                    hasValue: 0
-              hasValue: 1
-        hasValue: 1
+  - {fileID: 0}
   correspondingStages: ffffffff
 --- !u!65 &633625415
 BoxCollider:
@@ -22534,12 +22463,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 633625413}
   serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -108.35572, y: 12.66, z: -202.51}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 8.604279, y: -3.7800007, z: -5.98999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
+  m_Father: {fileID: 2005432139}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &634554666
 PrefabInstance:
@@ -32733,8 +32662,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Dialog
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 99d5eec77cdbffa4ebc4927f4a2b3d90, type: 2}
-  m_sharedMaterial: {fileID: -5171267665450599654, guid: 99d5eec77cdbffa4ebc4927f4a2b3d90, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f8974ba0173f75e44b45a5da3a17c6bd, type: 2}
+  m_sharedMaterial: {fileID: -3224067196373294222, guid: f8974ba0173f75e44b45a5da3a17c6bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -32764,7 +32693,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 1024
   m_textAlignment: 65535
@@ -41730,6 +41659,131 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f9835fdb88a535e48955a796e35686d4, type: 3}
+--- !u!1 &930028048
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 930028049}
+  - component: {fileID: 930028053}
+  - component: {fileID: 930028052}
+  - component: {fileID: 930028051}
+  - component: {fileID: 930028050}
+  m_Layer: 0
+  m_Name: O'Connor
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &930028049
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930028048}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -3.86, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2005432139}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &930028050
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930028048}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b50ed732435b4a94b8797bfaf12c2b06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechController: {fileID: 1325821867}
+  playerCamera: {fileID: 472119180}
+  dialogues:
+  - {fileID: 11400000, guid: b38442c77d943f848a02a8a87c71fc20, type: 2}
+  correspondingStages: ffffffff
+--- !u!136 &930028051
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930028048}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Height: 2
+  m_Direction: 1
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &930028052
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930028048}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &930028053
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 930028048}
+  m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!4 &930071846 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f9835fdb88a535e48955a796e35686d4, type: 3}
@@ -63732,8 +63786,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Option3
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 99d5eec77cdbffa4ebc4927f4a2b3d90, type: 2}
-  m_sharedMaterial: {fileID: -5171267665450599654, guid: 99d5eec77cdbffa4ebc4927f4a2b3d90, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f8974ba0173f75e44b45a5da3a17c6bd, type: 2}
+  m_sharedMaterial: {fileID: -3224067196373294222, guid: f8974ba0173f75e44b45a5da3a17c6bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -63763,7 +63817,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -80150,8 +80204,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: Option1
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 99d5eec77cdbffa4ebc4927f4a2b3d90, type: 2}
-  m_sharedMaterial: {fileID: -5171267665450599654, guid: 99d5eec77cdbffa4ebc4927f4a2b3d90, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: f8974ba0173f75e44b45a5da3a17c6bd, type: 2}
+  m_sharedMaterial: {fileID: -3224067196373294222, guid: f8974ba0173f75e44b45a5da3a17c6bd, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -80181,7 +80235,7 @@ MonoBehaviour:
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
   m_fontSizeMax: 72
-  m_fontStyle: 0
+  m_fontStyle: 1
   m_HorizontalAlignment: 2
   m_VerticalAlignment: 512
   m_textAlignment: 65535
@@ -90114,6 +90168,39 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: f9835fdb88a535e48955a796e35686d4, type: 3}
   m_PrefabInstance: {fileID: 1619182963}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &2005432138
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2005432139}
+  m_Layer: 0
+  m_Name: Npcs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &2005432139
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2005432138}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -116.96, y: 16.44, z: -196.52}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 633625418}
+  - {fileID: 930028049}
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &2005703382 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d36de7e0903f8d44db717bb751228fef, type: 3}
@@ -100614,4 +100701,4 @@ SceneRoots:
   - {fileID: 1426157505}
   - {fileID: 501735587}
   - {fileID: 140740303977100153}
-  - {fileID: 633625418}
+  - {fileID: 2005432139}
