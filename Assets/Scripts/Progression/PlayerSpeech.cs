@@ -50,7 +50,7 @@ namespace Progression
             if (Input.GetKeyDown(KeyCode.Return))
             {
                 DialogueOption selectedOption = _dialogueOptions[_selectedOption];
-                Dialogue? nextDialogue = selectedOption.FollowingDialogue;
+                Dialogue nextDialogue = selectedOption.FollowingDialogue;
 
                 if (selectedOption.TriggersNextStage)
                     StageManager.CurrentStage++;
