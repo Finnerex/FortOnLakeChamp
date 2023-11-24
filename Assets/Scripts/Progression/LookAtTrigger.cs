@@ -23,8 +23,7 @@ namespace Progression
         {
             if (!stages.Contains(StageManager.CurrentStage) || other.GetComponent<PlayerController>() == null)
                 return;
-        
-            Debug.Log("balls");
+            
             playerCamera.LookAt(_lookPosition, turnTimeSeconds);
         }
     }

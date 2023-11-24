@@ -7,7 +7,7 @@ public class PlayerCamera : MonoBehaviour
     private const string xAxis = "Mouse X";
     private const string yAxis = "Mouse Y";
 
-    private GameObject _player;
+    private PlayerController _player;
     private Camera _camera;
     
     [SerializeField] private float sensitivity = 2;
@@ -27,7 +27,7 @@ public class PlayerCamera : MonoBehaviour
     {
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Locked;
-        _player = GetComponentInParent<CharacterController>().gameObject;
+        _player = GetComponentInParent<PlayerController>();
         _camera = GetComponent<Camera>();
         
         _defaultFOV = _camera.fieldOfView;
@@ -72,10 +72,16 @@ public class PlayerCamera : MonoBehaviour
             _looking = false;
 
             // this is dumb but im doing it anyway
+            Vector3 cameraLocalRotation = cameraTransform.localRotation.eulerAngles;
             playerRotation.y = cameraRotation.y;
-            cameraRotation.y = 0;
+            cameraLocalRotation.y = 0;
+            
+            cameraTransform.localRotation = Quaternion.Euler(cameraLocalRotation);
+            playerTransform.rotation = Quaternion.Euler(playerRotation);
+
+            _player.MovementLocked = false;
+            return;
         }
-        
         
         // change it by mouse input
         cameraRotation.x -= Input.GetAxis(yAxis) * sensitivity;
@@ -87,11 +93,11 @@ public class PlayerCamera : MonoBehaviour
             > 180 => Mathf.Clamp(cameraRotation.x, 360 - 80, 360 + 80),
             _ => 80
         };
-        
+
         // Save it back
         cameraTransform.rotation = Quaternion.Euler(cameraRotation);
         playerTransform.rotation = Quaternion.Euler(playerRotation);
-        
+
     }
 
     public void LookAt(Vector3 position, float lookTimeSeconds)
@@ -99,23 +105,8 @@ public class PlayerCamera : MonoBehaviour
         _looking = true;
         _lookTimeSeconds = lookTimeSeconds;
         _currentLookTimeSeconds = 0;
-        
-        Debug.Log("Time: " + lookTimeSeconds);
+        _player.MovementLocked = true;
 
-        // this is so unnecessary and could be done much better
-        Transform cameraTransform = transform;
-        Transform playerTransform = _player.transform;
-        
-        // grab the current rotation
-        Vector3 cameraRotation = cameraTransform.rotation.eulerAngles;
-        Vector3 playerRotation = playerTransform.rotation.eulerAngles;
-        
-        cameraRotation.y = playerRotation.y;
-        playerRotation.y = 0;
-
-        cameraTransform.rotation = Quaternion.Euler(cameraRotation);
-        playerTransform.rotation = Quaternion.Euler(playerRotation);
-
-        _lookRotation = Quaternion.LookRotation(position - cameraTransform.position);
+        _lookRotation = Quaternion.LookRotation(position - transform.position);
     }
 }
