@@ -22384,35 +22384,76 @@ MonoBehaviour:
   dialogues:
   - mainText: Hi! How was your day?
     options:
-    - Good!
-    - Bad!
-    - Penis!
-    followingDialogues:
-    - mainText: That's wonderful to hear!
-      options:
-      - How was your day?
-      - ... [Exit]
-      followingDialogues:
-      - mainText: It was great!
-        options:
-        - Cool. Nice talking to you. [Exit]
-        - ... [Exit]
-        followingDialogues: []
-    - mainText: That's too bad.
-      options:
-      - ... [Exit]
-      followingDialogues: []
-    - mainText: Why the fuck would you say that to me you little bitch.
-      options:
-      - Kill your self bozo
-      - ... [Exit]
-      followingDialogues:
-      - mainText: Fuck you!
-        options:
-        - Fuck you! [Exit]
-        - I'm Sorry [Exit]
-        - ... [Exit]
-        followingDialogues: []
+    - text: Good
+      triggersNextStage: 0
+      followingDialogue:
+        v:
+          mainText: Thats great!
+          options:
+          - text: How was your day
+            triggersNextStage: 0
+            followingDialogue:
+              v:
+                mainText: It was nice
+                options:
+                - text: okay
+                  triggersNextStage: 0
+                  followingDialogue:
+                    v:
+                      mainText: 
+                      options: []
+                    hasValue: 0
+                - text: bye
+                  triggersNextStage: 0
+                  followingDialogue:
+                    v:
+                      mainText: 
+                      options: []
+                    hasValue: 0
+              hasValue: 1
+          - text: Goodbye
+            triggersNextStage: 0
+            followingDialogue:
+              v:
+                mainText: It was nice
+                options: []
+              hasValue: 0
+        hasValue: 1
+    - text: Bad
+      triggersNextStage: 0
+      followingDialogue:
+        v:
+          mainText: Sucks to suck
+          options:
+          - text: indeed
+            triggersNextStage: 0
+            followingDialogue:
+              v:
+                mainText: 
+                options: []
+              hasValue: 0
+          - text: kys
+            triggersNextStage: 0
+            followingDialogue:
+              v:
+                mainText: kys
+                options:
+                - text: kys
+                  triggersNextStage: 0
+                  followingDialogue:
+                    v:
+                      mainText: 
+                      options: []
+                    hasValue: 0
+                - text: ...
+                  triggersNextStage: 0
+                  followingDialogue:
+                    v:
+                      mainText: 
+                      options: []
+                    hasValue: 0
+              hasValue: 1
+        hasValue: 1
   correspondingStages: ffffffff
 --- !u!65 &633625415
 BoxCollider:
@@ -59923,7 +59964,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   monologueText: {fileID: 1967972790}
   dialogueText: {fileID: 796550509}
-  dialogueOptions:
+  dialogueOptionsText:
   - {fileID: 1704318697}
   - {fileID: 115993540}
   - {fileID: 1433512340}
