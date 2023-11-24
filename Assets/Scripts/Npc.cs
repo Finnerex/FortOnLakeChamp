@@ -14,6 +14,8 @@ public class Npc : MonoBehaviour, IInteractable
     
     private Dictionary<GameStage, Dialogue> _dialogues;
 
+    private Transform _transform;
+
     private void Awake()
     {
         _dialogues = new Dictionary<GameStage, Dialogue>();
@@ -22,14 +24,21 @@ public class Npc : MonoBehaviour, IInteractable
         {
             _dialogues.Add(correspondingStages[i], dialogues[i]);
         }
+
+        _transform = transform;
+    }
+
+    private void Update()
+    {
+        _transform.LookAt(playerCamera.transform);
     }
 
     public bool OnInteract()
     {
         Dialogue dialogue = _dialogues[StageManager.CurrentStage];
 
-        if (dialogue == null)
-            return false;
+        // if (dialogue is null)
+        //     return false;
 
         playerCamera.LookAt(transform.position, 1);
         speechController.SetDialogue(dialogue);

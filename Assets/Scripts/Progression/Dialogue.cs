@@ -4,17 +4,16 @@ using UnityEngine;
 
 namespace Progression
 {
-    [Serializable]
-    public class Dialogue
+    [Serializable] 
+    public struct Dialogue
     {
-        [SerializeField] private string mainText;
+        [SerializeField] [TextArea] private string mainText;
 
-        [SerializeField] private string[] options = { "..." };
-        [SerializeField] private Dialogue[] followingDialogues;
+        [SerializeField] private DialogueOption[] options;
 
         public string MainText => mainText;
-        public string[] Options => options;
-        public Dialogue[] FollowingDialogues => followingDialogues;
+        public DialogueOption[] Options => options;
+        
         
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 
 namespace Progression
@@ -11,20 +12,22 @@ namespace Progression
 
         [SerializeField] private TextMeshProUGUI monologueText;
         [SerializeField] private TextMeshProUGUI dialogueText;
-        [SerializeField] private TextMeshProUGUI[] dialogueOptions;
+        [SerializeField] private TextMeshProUGUI[] dialogueOptionsText;
         [SerializeField] private RectTransform pointyGuy; // pointy guy my beloved
 
         private float _monologueTimeSeconds;
-
-        private Dictionary<string, Dialogue> _dialogueOptionsDict;
+        
+        private DialogueOption[] _dialogueOptions;
         private int _selectedOption;
 
         private void Awake()
         {
             dialogueText.text = "";
             monologueText.text = "";
+
+            _dialogueOptions = new DialogueOption[3];
             
-            foreach (TextMeshProUGUI t in dialogueOptions)
+            foreach (TextMeshProUGUI t in dialogueOptionsText)
             {
                 t.text = "";
             }
@@ -46,13 +49,14 @@ namespace Progression
 
             if (Input.GetKeyDown(KeyCode.Return))
             {
-                // what a line (this code is a mess already)
-                // Dialogue nextDialogue = _dialogueOptionsDict[dialogueOptions[_selectedOption].text];
+                DialogueOption selectedOption = _dialogueOptions[_selectedOption];
+                Dialogue? nextDialogue = selectedOption.FollowingDialogue;
 
-                bool hasNext = _dialogueOptionsDict.TryGetValue(dialogueOptions[_selectedOption].text, out Dialogue nextDialogue);
-
+                if (selectedOption.TriggersNextStage)
+                    StageManager.CurrentStage++;
+                
                 // no further questions your honor
-                if (!hasNext)
+                if (nextDialogue == null)
                 {
                     ResetOptions();
                     return;
@@ -60,19 +64,19 @@ namespace Progression
 
                 _selectedOption = 0;
                 SetPointyGuy();
-                SetDialogue(nextDialogue);
+                SetDialogue(nextDialogue.Value);
                 
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
             {
                 // wrapping
-                _selectedOption += (_selectedOption >= dialogueOptions.Length - 1 || dialogueOptions[_selectedOption + 1].text == "") ? 0 : 1;
+                _selectedOption += (_selectedOption >= dialogueOptionsText.Length - 1 || dialogueOptionsText[_selectedOption + 1].text == "") ? 0 : 1;
                 SetPointyGuy();
             }
             else if (Input.GetKeyDown(KeyCode.UpArrow))
             {
                 // wrapping again
-                _selectedOption -= (_selectedOption <= 0 || dialogueOptions[_selectedOption - 1].text == "") ? 0 : 1;
+                _selectedOption -= (_selectedOption <= 0 || dialogueOptionsText[_selectedOption - 1].text == "") ? 0 : 1;
                 SetPointyGuy();
             }
 
@@ -81,7 +85,9 @@ namespace Progression
         private void ResetOptions()
         {
             dialogueText.text = "";
-            foreach (TextMeshProUGUI t in dialogueOptions)
+            _dialogueOptions = new DialogueOption[3];
+            
+            foreach (TextMeshProUGUI t in dialogueOptionsText)
             {
                 t.text = "";
             }
@@ -91,7 +97,7 @@ namespace Progression
 
         private void SetPointyGuy()
         {
-            TextMeshProUGUI currentOption = dialogueOptions[_selectedOption];
+            TextMeshProUGUI currentOption = dialogueOptionsText[_selectedOption];
             RectTransform optionTransform = currentOption.rectTransform;
 
             pointyGuy.SetParent(optionTransform);
@@ -115,18 +121,15 @@ namespace Progression
             
             dialogueText.text = dialogue.MainText;
 
-            string[] options = dialogue.Options;
+            DialogueOption[] options = dialogue.Options;
+            
 
-            Dialogue[] followingDialogues = dialogue.FollowingDialogues;
-
-            _dialogueOptionsDict = new Dictionary<string, Dialogue>();
-
-            for (int i = 0; i < dialogueOptions.Length; i++)
+            for (int i = 0; i < dialogueOptionsText.Length; i++)
             {
-                if (i < followingDialogues.Length && i < options.Length)
-                    _dialogueOptionsDict.Add(options[i], followingDialogues[i]);
+                if (i < options.Length)
+                    _dialogueOptions[i] = options[i];
 
-                dialogueOptions[i].text = i < options.Length ? options[i] : "";
+                dialogueOptionsText[i].text = i < options.Length ? options[i].Text : "";
  
             }
         }
