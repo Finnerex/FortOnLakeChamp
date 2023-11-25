@@ -20,6 +20,6 @@ MonoBehaviour:
   - text: What kind of monsters?
     triggersNextStage: 0
     followingDialogue: {fileID: 11400000, guid: 56eef51434df5614b95caac0f56bd04e, type: 2}
-  - text: You're full of shit, O'Connor.
+  - text: You're full of shite, O'Connor.
     triggersNextStage: 0
     followingDialogue: {fileID: 0}

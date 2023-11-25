@@ -3,7 +3,9 @@
     public enum GameStage
     {
         Testing = -1,
-        EatingTime
+        EatingTime,
+        ForestOne,
+        LookingForWood,
 
     }
 }
