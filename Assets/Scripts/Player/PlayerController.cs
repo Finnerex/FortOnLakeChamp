@@ -10,10 +10,15 @@ public class PlayerController : MonoBehaviour
     private CharacterController _cc;
     [SerializeField] private float walkSpeed = 3;
     [SerializeField] private float sprintMultiplier = 2;
-    
-    public bool MovementLocked { get; set; }
 
-        // Start is called before the first frame update
+    [SerializeField] private float maxStaminaTimeSeconds = 10;
+    public float GetMaxStamina => maxStaminaTimeSeconds;
+    public float StaminaSecondsLeft { get; private set; }
+
+    public bool MovementLocked { get; set; }
+    public bool StaminaEnabled { get; set; } = true;
+
+    // Start is called before the first frame update
     void Start()
     {
         _cc = GetComponent<CharacterController>();
@@ -38,7 +43,16 @@ public class PlayerController : MonoBehaviour
             direction -= playerTransform.right;
 
         // Sprint when moving forward and pressing shift
-        float speed = walkSpeed * (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) ? sprintMultiplier : 1);
+        // float speed = walkSpeed * (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) ? sprintMultiplier : 1);
+
+        float speed = walkSpeed;
+        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) && (StaminaSecondsLeft > 0 || !StaminaEnabled))
+        {
+            speed *= sprintMultiplier;
+            StaminaSecondsLeft -= Time.deltaTime;
+        }
+        else if (StaminaSecondsLeft < maxStaminaTimeSeconds && !(Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W)))
+            StaminaSecondsLeft += Time.deltaTime / 2;
 
         _cc.SimpleMove(MovementLocked ?  Vector3.zero : direction.normalized * speed);
 

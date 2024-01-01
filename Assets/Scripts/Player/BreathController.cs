@@ -1,9 +1,11 @@
+using System;
 using UnityEngine;
 
 public class BreathController : MonoBehaviour
 {
     
     [SerializeField] private ParticleSystem breath;
+    [SerializeField] private PlayerController controller;
 
     [SerializeField] private float breathDelaySeconds;
     private float _currentBreathTimeSeconds;
@@ -13,7 +15,8 @@ public class BreathController : MonoBehaviour
     {
         _currentBreathTimeSeconds += Time.deltaTime;
 
-        if (Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W) && _currentBreathTimeSeconds >= breathDelaySeconds)
+        if (controller.StaminaSecondsLeft < controller.GetMaxStamina && !(Input.GetKey(KeyCode.LeftShift) && Input.GetKey(KeyCode.W))
+                                                                     && _currentBreathTimeSeconds >= breathDelaySeconds)
         {
             Breathe();
             _currentBreathTimeSeconds = 0;
