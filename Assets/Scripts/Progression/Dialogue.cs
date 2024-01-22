@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Progression
 {
-    [CreateAssetMenu(fileName = "New Dialogue", menuName = "Dialogue/Dialogue")]
+    [CreateAssetMenu(fileName = "New Dialogue", menuName = "FOLC/Dialogue")]
     public class Dialogue : ScriptableObject
     {
         

@@ -83,7 +83,7 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0.5
     - _GlossyReflections: 1
-    - _HeightMultiplier: 12
+    - _HeightMultiplier: 14.44
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -92,12 +92,14 @@ Material:
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
-    - _TrailRadius: 1
+    - _TrailRadius: 4.09
     - _UVSec: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Offset: {r: 1.15, g: 0, b: 0, a: 0}
+    - _Tiling: {r: 1, g: 1, b: 0, a: 0}
     - _TrailBlendingCap: {r: 0.5, g: 0.5, b: 1, a: 1}
     - _TrailColor: {r: 0.620461, g: 0.6630974, b: 0.6886792, a: 0}
   m_BuildTextureStacks: []
