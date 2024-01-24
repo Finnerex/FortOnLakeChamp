@@ -1,3 +1,4 @@
+using System.Transactions;
 using UnityEngine;
 
 public class TorchController : PickubableObject
@@ -12,6 +13,7 @@ public class TorchController : PickubableObject
 
     public override void Throw(Vector3 force)
     {
+        base.Throw(force);
         flame.Stop();
     }
 }
