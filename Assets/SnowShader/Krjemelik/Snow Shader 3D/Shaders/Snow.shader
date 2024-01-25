@@ -14,6 +14,10 @@ Shader "Custom/InteractiveSnow/Snow"
         _HeightAmount("Height Amount", float) = 0.5
         _TessellationAmount("Tessellation Amount", Range(1,32)) = 8
         _BottomColor("Bottom Color", Color) = (.8,.8,1,1)
+        
+        _HijackedRadius("HijackedRadius", float) = 0.9
+        _Steepness("Steepness", float) = 0.9
+        _Offset("Offset", float) = -1.4
 
     }
         SubShader
@@ -52,6 +56,10 @@ Shader "Custom/InteractiveSnow/Snow"
             float _HeightAmount;
             float _NormalMapAmount;
 
+            float _HijackedRadius;
+            float _Steepness;
+            float _Offset;
+
             // Add instancing support for this shader. You need to check 'Enable Instancing' on materials that use the shader.
             // See https://docs.unity3d.com/Manual/GPUInstancing.html for more information about instancing.
             // #pragma instancing_options assumeuniformscaling
@@ -62,22 +70,23 @@ Shader "Custom/InteractiveSnow/Snow"
 
             void vert(inout appdata_full v)
             {
-                float offset = tex2Dlod(_HeightMap, float4(v.texcoord.xy, 0, 0)).r * _HeightAmount;
-                v.vertex.y += offset;
+                float offset = tex2Dlod(_HeightMap, float4(v.texcoord.xy, 0, 0)).r;
+                // idk how to actually write shaders so i just hijacked this to work for me
+                v.vertex.y += offset > _HijackedRadius ? _HeightAmount : pow(2.7183f, offset * _Steepness) + _Offset;
             }
             void surf(Input IN, inout SurfaceOutputStandard o)
             {
                 float height = tex2D(_HeightMap, IN.uv_MainTex).r;
                 fixed4 c = tex2D(_MainTex, IN.uv_MainTex) * lerp(_BottomColor, _Color, height) * _NormalMapAmount;
-
+                
                 o.Albedo = c.rgb;
                 o.Normal = UnpackNormal(tex2D(_NormalMap, IN.uv_NormalMap));
-
+                
                 fixed4 metal = tex2D(_MetallicGlossMap, IN.uv_MainTex);
                 o.Metallic = metal.r;
-
-                o.Smoothness = metal.a * _Glossiness;
-                o.Alpha = c.a;
+                
+                // o.Smoothness = metal.a * _Glossiness;
+                // o.Alpha = c.a;
             }
             ENDCG
         }
