@@ -20,6 +20,7 @@ namespace Player
         private float _lookTimeSeconds;
         private float _currentLookTimeSeconds;
         private Quaternion _lookRotation;
+        private Quaternion _lookStartRotation;
         private bool _looking;
     
         // Start is called before the first frame update
@@ -62,7 +63,8 @@ namespace Player
             if (_looking && _currentLookTimeSeconds < _lookTimeSeconds)
             {
                 _currentLookTimeSeconds += Time.deltaTime;
-                cameraTransform.rotation = Quaternion.Slerp(cameraTransform.rotation, _lookRotation, _currentLookTimeSeconds / _lookTimeSeconds);
+                cameraTransform.rotation = Quaternion.Lerp(_lookStartRotation, _lookRotation, _currentLookTimeSeconds / _lookTimeSeconds);
+                
                 return;
             }
         
@@ -106,8 +108,10 @@ namespace Player
             _lookTimeSeconds = lookTimeSeconds;
             _currentLookTimeSeconds = 0;
             _player.MovementLocked = true;
+            Transform t = transform;
 
-            _lookRotation = Quaternion.LookRotation(position - transform.position);
+            _lookRotation = Quaternion.LookRotation(position - t.position);
+            _lookStartRotation = t.rotation;
         }
     }
 }

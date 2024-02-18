@@ -4,6 +4,8 @@
     {
         Testing = -1,
         EatingTime,
+        CheckPerimeter,
+        MonsterApproach,
         ForestOne,
         LookingForWood,
 

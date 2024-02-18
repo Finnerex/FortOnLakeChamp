@@ -15,7 +15,7 @@ public class PickubableObject : MonoBehaviour, IInteractable
 
     private void Start()
     {
-        _player = FindObjectOfType<PlayerInteractController>();
+        _player = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerInteractController>(); // probably better than by type, serialization is inconvenient here
         _rigidbody = GetComponent<Rigidbody>();
         _head = _player.GetComponentInChildren<Camera>().gameObject;
     }

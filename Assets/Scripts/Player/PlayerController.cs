@@ -28,6 +28,7 @@ public class PlayerController : MonoBehaviour
     {
         _cc = GetComponent<CharacterController>();
         _audioController = GetComponent<PlayerAudioController>();
+        StaminaSecondsLeft = maxStaminaTimeSeconds;
     }
 
     // Update is called once per frame
@@ -67,19 +68,19 @@ public class PlayerController : MonoBehaviour
         // Audio
         bool isWalking = direction != Vector3.zero;
             
-        if (!_wasSprinting && isSprinting)
+        if (!_wasSprinting && isSprinting && !MovementLocked)
         {
             _audioController.Loop("player_sprint", true);
             _audioController.Play("player_sprint", true);
         }
-        else if (!_wasWalking && isWalking)
+        else if (!_wasWalking && isWalking && !MovementLocked)
         {
             _audioController.Loop("player_walk", true);
             _audioController.Play("player_walk", true);
         }
-        if (!isSprinting)
+        if (!isSprinting || MovementLocked)
             _audioController.Loop("player_sprint", false);
-        if (!isWalking || isSprinting)
+        if (!isWalking || isSprinting || MovementLocked)
             _audioController.Loop("player_walk", false);
 
         _wasSprinting = isSprinting;

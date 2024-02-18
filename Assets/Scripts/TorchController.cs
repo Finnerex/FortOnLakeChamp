@@ -1,13 +1,16 @@
 using System.Transactions;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class TorchController : PickubableObject
 {
     [SerializeField] private ParticleSystem flame;
+    [SerializeField] private Light theLight;
 
     public override bool OnInteract()
     {
         flame.Play();
+        theLight.enabled = true;
         return base.OnInteract();
     }
 
@@ -15,5 +18,6 @@ public class TorchController : PickubableObject
     {
         base.Throw(force);
         flame.Stop();
+        theLight.enabled = false;
     }
 }

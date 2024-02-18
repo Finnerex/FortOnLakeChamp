@@ -4,6 +4,8 @@ using Player;
 using Progression;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.Serialization;
+using Quaternion = System.Numerics.Quaternion;
 
 public class Npc : MonoBehaviour, IInteractable
 {
@@ -16,7 +18,9 @@ public class Npc : MonoBehaviour, IInteractable
     
     private Dictionary<GameStage, Dialogue> _dialogues;
 
-    private Transform _transform;
+    [SerializeField] private Transform headTransform;
+    [SerializeField] private float heightOffset;
+    [SerializeField] private bool invertLook;
 
     private void Awake()
     {
@@ -27,12 +31,19 @@ public class Npc : MonoBehaviour, IInteractable
             _dialogues.Add(correspondingStages[i], dialogues[i]);
         }
 
-        _transform = transform;
+        // headTransform = transform;
     }
 
     private void Update()
     {
-        _transform.LookAt(playerCamera.transform);
+        Vector3 position = headTransform.position;
+        
+        if (invertLook)
+            headTransform.LookAt(position - (playerCamera.transform.position - position));
+        else
+            headTransform.LookAt(playerCamera.transform.position);
+        
+        
     }
 
     public bool OnInteract()
@@ -40,7 +51,7 @@ public class Npc : MonoBehaviour, IInteractable
         if (!_dialogues.TryGetValue(StageManager.CurrentStage, out Dialogue dialogue))
             return false;
 
-        playerCamera.LookAt(transform.position, 1);
+        playerCamera.LookAt(transform.position + Vector3.up * heightOffset, 1);
         speechController.SetDialogue(dialogue, gameObject.name);
         
         return true;
