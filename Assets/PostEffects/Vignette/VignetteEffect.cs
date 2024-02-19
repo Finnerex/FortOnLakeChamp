@@ -1,16 +1,20 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class VignetteEffect : MonoBehaviour {
 
 	public bool on = false;
 
-	[Range(0f, 2f)]
+	[Range(0f, 100f)]
 	public float amount = 1f;
 
 	public Material material;
-
+	private static readonly int Amount = Shader.PropertyToID("_Amount");
+	
+	private float _currentWakeupTime;
+	[SerializeField] private float wakeupTime = 2f;
 
 	void OnRenderImage(RenderTexture src, RenderTexture dest)
 	{
@@ -25,10 +29,20 @@ public class VignetteEffect : MonoBehaviour {
 	}
 
 
-	void Update () {
-		if(on)
+	void Update ()
+	{
+
+		if (amount <= 0)
+			on = false;
+
+		if (!on) return;
+		
+		material.SetFloat(Amount, amount);
+
+		if (_currentWakeupTime < wakeupTime)
 		{
-			material.SetFloat("_Amount", amount);
+			_currentWakeupTime += Time.deltaTime;
+			amount = Mathf.Lerp(20, -amount, _currentWakeupTime / wakeupTime);
 		}
 	}
 }

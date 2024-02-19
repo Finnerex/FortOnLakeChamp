@@ -73,13 +73,13 @@ PrefabInstance:
       addedObject: {fileID: 433083456878288296}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cec23f235c014964e9511bfebb856068, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 322011307090050185}
-    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cec23f235c014964e9511bfebb856068, type: 3}
-      insertIndex: -1
       addedObject: {fileID: 8550758386368941906}
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cec23f235c014964e9511bfebb856068, type: 3}
       insertIndex: -1
       addedObject: {fileID: 162241269246384096}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: cec23f235c014964e9511bfebb856068, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 2998173349583960454}
   m_SourcePrefab: {fileID: 100100000, guid: cec23f235c014964e9511bfebb856068, type: 3}
 --- !u!1 &1850552202163259744 stripped
 GameObject:
@@ -113,20 +113,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &322011307090050185
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1850552202163259744}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a3c8044568ea4763917c39875ac4db2c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  relativePosition: {x: 0.5, y: -1.6, z: 1}
-  rotation: {x: 0, y: 0.99904823, z: 0, w: 0.043619454}
 --- !u!65 &8550758386368941906
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -164,3 +150,17 @@ MonoBehaviour:
   reloadTimeSeconds: 3
   speed: 100
   musketBall: {fileID: 3109882633842065323, guid: b507359cfbf0f2e4a961bac5591e1210, type: 3}
+--- !u!114 &2998173349583960454
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1850552202163259744}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: be1f910bb2544c22bff272254e649a6a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  relativePosition: {x: 0.51, y: -1.11, z: 0.9}
+  rotation: {x: 0, y: 0.99904823, z: 0, w: 0.043619454}

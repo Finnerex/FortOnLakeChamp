@@ -4,18 +4,13 @@ using UnityEngine;
 
 namespace Utility
 {
-    public class ToggleObjectTrigger : MonoBehaviour
+    public class ToggleObjectTrigger : Triggerable
     {
-        [SerializeField] private GameStage[] stages;
         [SerializeField] private GameObject toToggle;
     
-        private void OnTriggerEnter(Collider other)
+        public override void Trigger()
         {
-            if (!stages.Contains(StageManager.CurrentStage) || other.GetComponent<PlayerController>() == null)
-                return;
-
             toToggle.SetActive(!toToggle.activeSelf);
-
         }
     }
 }

@@ -5,6 +5,7 @@ using Progression;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Utility;
 using Quaternion = System.Numerics.Quaternion;
 
 public class Npc : MonoBehaviour, IInteractable
@@ -22,6 +23,8 @@ public class Npc : MonoBehaviour, IInteractable
     [SerializeField] private float heightOffset;
     [SerializeField] private bool invertLook;
 
+    private TriggerTriggerer _triggerer;
+
     private void Awake()
     {
         _dialogues = new Dictionary<GameStage, Dialogue>();
@@ -32,6 +35,7 @@ public class Npc : MonoBehaviour, IInteractable
         }
 
         // headTransform = transform;
+        _triggerer = GetComponent<TriggerTriggerer>();
     }
 
     private void Update()
@@ -52,7 +56,7 @@ public class Npc : MonoBehaviour, IInteractable
             return false;
 
         playerCamera.LookAt(transform.position + Vector3.up * heightOffset, 1);
-        speechController.SetDialogue(dialogue, gameObject.name);
+        speechController.SetDialogue(dialogue, gameObject.name, _triggerer);
         
         return true;
     }

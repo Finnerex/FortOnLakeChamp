@@ -15,8 +15,8 @@ MonoBehaviour:
   mainText: Killed 50 men in one night. No survivors.
   options:
   - text: That's awful.
-    triggersNextStage: 0
+    trigger: 1
     followingDialogue: {fileID: 0}
   - text: Oh shiver me timbers, O'Connor.
-    triggersNextStage: 0
+    trigger: 1
     followingDialogue: {fileID: 0}

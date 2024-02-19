@@ -5,19 +5,15 @@ using UnityEngine;
 
 namespace Utility
 {
-    public class StaminaChangeTrigger : MonoBehaviour
+    public class StaminaChangeTrigger : Triggerable
     {
-        [SerializeField] private GameStage[] stages;
+        
         [SerializeField] private bool staminaEnabled;
         [SerializeField] private PlayerController controller;
     
-        private void OnTriggerEnter(Collider other)
+        public override void Trigger()
         {
-            if (!stages.Contains(StageManager.CurrentStage) || other.GetComponent<PlayerController>() == null)
-                return;
-
             controller.StaminaEnabled = staminaEnabled;
-
         }
     }
 }

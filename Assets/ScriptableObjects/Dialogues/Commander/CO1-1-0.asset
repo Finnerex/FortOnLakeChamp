@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7196edae059149aeac850b63b56ccfbb, type: 3}
+  m_Name: CO1-1-0
+  m_EditorClassIdentifier: 
+  mainText: What was it?
+  options:
+  - text: I didn't get a good look at it. When I came back with my gun it had disapeared.
+    trigger: 0
+    followingDialogue: {fileID: 11400000, guid: bde004ea8c5ea3f47adacd8118187c71, type: 2}
+  - text: It was big and boney with glowing red eyes and antlers.
+    trigger: 0
+    followingDialogue: {fileID: 11400000, guid: e3a854dfac250a94382563214ba3d720, type: 2}

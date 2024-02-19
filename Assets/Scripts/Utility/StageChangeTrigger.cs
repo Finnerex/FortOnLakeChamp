@@ -1,17 +1,14 @@
+using Progression;
 using UnityEngine;
 
-namespace Progression
+namespace Utility
 {
-    public class StageChangeTrigger : MonoBehaviour
+    public class StageChangeTrigger : Triggerable
     {
-        [SerializeField] private GameStage currentStage;
         [SerializeField] private GameStage nextStage; // do this or just have it increment?
         
-        private void OnTriggerEnter(Collider other)
+        public override void Trigger()
         {
-            if (StageManager.CurrentStage != currentStage || other.GetComponent<PlayerController>() == null)
-                return;
-
             StageManager.CurrentStage = nextStage;
         }
     }

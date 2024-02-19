@@ -15,11 +15,11 @@ MonoBehaviour:
   mainText: That's why we see no natives and especially no French.
   options:
   - text: Where did you hear that?
-    triggersNextStage: 0
+    trigger: 0
     followingDialogue: {fileID: 11400000, guid: 96e82638878b0144688fae84d8f19bb1, type: 2}
   - text: What kind of monsters?
-    triggersNextStage: 0
+    trigger: 0
     followingDialogue: {fileID: 11400000, guid: 56eef51434df5614b95caac0f56bd04e, type: 2}
   - text: You're full of shite, O'Connor.
-    triggersNextStage: 0
+    trigger: 1
     followingDialogue: {fileID: 0}

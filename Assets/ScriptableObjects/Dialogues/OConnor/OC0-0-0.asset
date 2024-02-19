@@ -15,5 +15,5 @@ MonoBehaviour:
   mainText: I've heard there are monsters in these woods.
   options:
   - text: ...
-    triggersNextStage: 0
+    trigger: 0
     followingDialogue: {fileID: 11400000, guid: 6bccb014de2e0e24fbd461ce34451d2f, type: 2}

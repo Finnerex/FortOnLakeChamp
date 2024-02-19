@@ -15,8 +15,8 @@ MonoBehaviour:
   mainText: You'll go crazy if it doesn't eat you first.
   options:
   - text: Where did you hear all that?
-    triggersNextStage: 0
+    trigger: 0
     followingDialogue: {fileID: 11400000, guid: 96e82638878b0144688fae84d8f19bb1, type: 2}
   - text: Huh...
-    triggersNextStage: 1
+    trigger: 1
     followingDialogue: {fileID: 0}

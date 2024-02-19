@@ -1,6 +1,7 @@
 using Progression;
 using TMPro;
 using UnityEngine;
+using Utility;
 
 namespace Player
 {
@@ -18,6 +19,9 @@ namespace Player
         private int _selectedOption;
         private string _senderName;
 
+        private TriggerTriggerer _triggerer;
+        [SerializeField] private Collider player;
+
         private void Awake()
         {
             dialogueText.text = "";
@@ -31,7 +35,7 @@ namespace Player
             }
             
             pointyGuy.gameObject.SetActive(false);
-            
+
         }
 
         // Update is called once per frame
@@ -49,8 +53,8 @@ namespace Player
                 DialogueOption selectedOption = _dialogueOptions[_selectedOption];
                 Dialogue nextDialogue = selectedOption.FollowingDialogue;
 
-                if (selectedOption.TriggersNextStage)
-                    StageManager.CurrentStage++;
+                if (selectedOption.Trigger && !ReferenceEquals(_triggerer, null))
+                    _triggerer.OnTriggerEnter(player); // lmao
                 
                 // no further questions your honor
                 if (nextDialogue is null)
@@ -59,7 +63,7 @@ namespace Player
                     return;
                 }
                 
-                SetDialogue(nextDialogue, _senderName);
+                SetDialogue(nextDialogue, _senderName, _triggerer);
                 
             }
             else if (Input.GetKeyDown(KeyCode.DownArrow))
@@ -110,13 +114,14 @@ namespace Player
             _monologueTimeSeconds = displayTimeSeconds;
         }
 
-        public void SetDialogue(Dialogue dialogue, string senderName)
+        public void SetDialogue(Dialogue dialogue, string senderName, TriggerTriggerer triggerer)
         {
             pointyGuy.gameObject.SetActive(true);
             _selectedOption = 0;
             SetPointyGuy();
 
             _senderName = senderName;
+            _triggerer = triggerer;
             
             dialogueText.text = senderName + ":\n" + dialogue.MainText;
 

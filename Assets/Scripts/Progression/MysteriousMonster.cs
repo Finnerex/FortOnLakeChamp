@@ -7,7 +7,8 @@ namespace Progression
     {
 
         [SerializeField] private Transform player;
-        private float speed = -0.5f;
+        [SerializeField] private CharacterController controller;
+        [SerializeField] private float _speed = 0.5f;
         
         private void Awake()
         {
@@ -19,17 +20,17 @@ namespace Progression
             if (StageManager.CurrentStage != GameStage.MonsterApproach)
                 return;
 
-            speed += 0.001f;
+            // _speed += 0.001f;
             
-            if (speed < 0)
+            if (_speed < 0)
                 return;
 
             Transform t = transform;
             Vector3 position = t.position;
 
-            position += (player.position - position).normalized * (speed * 0.1f);
+            controller.Move(t.forward * _speed/*(player.position - position).normalized * (_speed * 0.1f)*/);
+            controller.SimpleMove(Vector3.zero);
 
-            t.position = position;
         }
     }
 }
