@@ -12,9 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7196edae059149aeac850b63b56ccfbb, type: 3}
   m_Name: CO1-3-0
   m_EditorClassIdentifier: 
-  mainText: Well Mr. Thomas, you're on firewood tonight, you better get going on
-    that.
+  mainText: Must have been the wind.
   options:
-  - text: Ok.
-    trigger: 1
-    followingDialogue: {fileID: 0}
+  - text: Must have been...
+    trigger: 0
+    followingDialogue: {fileID: 11400000, guid: 9db6035e39253b447a65230fd9a2ac25, type: 2}

@@ -14,21 +14,18 @@ namespace Utility
 
         private void Update()
         {
-            if (Input.GetKeyDown(KeyCode.Return))
+            if (Input.GetKeyDown(KeyCode.Return) && _enteringCommand)
             {
-                if (_enteringCommand)
-                {
-                    ExecuteCommand(_currentCommand);
-                    _currentCommand = "";
-                }
+                ExecuteCommand(_currentCommand);
+                _currentCommand = "";
 
-                _enteringCommand = !_enteringCommand;
+                _enteringCommand = false;
             }
 
+            
             if (_enteringCommand)
             {
                 
-
                 if (Input.GetKeyDown(KeyCode.Backspace))
                     _currentCommand = _currentCommand[..^1]; // wizardry
                 
@@ -42,6 +39,9 @@ namespace Utility
             }
 
             text.text = _currentCommand;
+            
+            if (Input.GetKeyDown(KeyCode.Slash) && !_enteringCommand)
+                _enteringCommand = true;
 
         }
 

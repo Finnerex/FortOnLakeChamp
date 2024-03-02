@@ -102,7 +102,7 @@ namespace Player
             pointyGuy.SetParent(optionTransform);
             Vector3 pointyPos = pointyGuy.localPosition;
             
-            pointyPos.x = -200;
+            pointyPos.x = -220;
             pointyPos.y = 0;
 
             pointyGuy.localPosition = pointyPos;

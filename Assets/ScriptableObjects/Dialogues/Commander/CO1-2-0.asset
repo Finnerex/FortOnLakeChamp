@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7196edae059149aeac850b63b56ccfbb, type: 3}
   m_Name: CO1-2-0
   m_EditorClassIdentifier: 
-  mainText: Must have been the wind.
+  mainText: ...
   options:
-  - text: Must have been...
+  - text: When I came back with my gun it had disapeared.
     trigger: 0
-    followingDialogue: {fileID: 11400000, guid: 9db6035e39253b447a65230fd9a2ac25, type: 2}
+    followingDialogue: {fileID: 11400000, guid: bde004ea8c5ea3f47adacd8118187c71, type: 2}

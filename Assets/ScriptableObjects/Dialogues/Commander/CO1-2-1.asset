@@ -12,12 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7196edae059149aeac850b63b56ccfbb, type: 3}
   m_Name: CO1-2-1
   m_EditorClassIdentifier: 
-  mainText: Sounds like a buck. Are you okay Mr. Thomas, maybe you should get some
-    rest.
-  options:
-  - text: You're probably right...
-    trigger: 0
-    followingDialogue: {fileID: 11400000, guid: 9db6035e39253b447a65230fd9a2ac25, type: 2}
-  - text: I know what I saw!
-    trigger: 0
-    followingDialogue: {fileID: 11400000, guid: 9db6035e39253b447a65230fd9a2ac25, type: 2}
+  mainText: 
+  options: []
